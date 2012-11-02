@@ -44,13 +44,7 @@ def fetch():
     except mechanize.HTTPError, response2:
         pass
     if response2.geturl() == "https://www.webcampus.uade.edu.ar/Publicidad/Mensaje_Avisos.aspx":
-        forms = [f for f in br.forms()]
-        form = forms[0]
-        request2 = form.click()
-        try:
-            response2 = mechanize.urlopen(request2)
-    	except mechanize.HTTPError, response2:
-            pass
+        response2 = br.open('https://www.webcampus.uade.edu.ar/Home.aspx')
     if response2.geturl() != 'https://www.webcampus.uade.edu.ar/Home.aspx':
         webcampuschange()
     out = response2.read()
